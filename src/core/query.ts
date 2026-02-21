@@ -45,4 +45,5 @@ export type QueryAST = {
   };
 
   select?: string[]; // projection
+  intent?: "read" | "write" | "aggregate";
 };

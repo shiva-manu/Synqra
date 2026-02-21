@@ -24,7 +24,17 @@ export type MigrationPlan = {
   logs: string[];   // Plain English logs describing what was planned
 };
 
+export type QueryMetrics = {
+  planningTimeMs: number;
+  executionTimeMs: number;
+  totalTimeMs: number;
+  adapter: string;
+};
+
+export type QueryObserver = (metrics: QueryMetrics, plan: QueryPlan, query: QueryAST) => void;
+
 export interface Adapter {
+  name: string;
   capabilities: AdapterCapabilities;
   connect(): Promise<void>;
   plan(query: QueryAST): QueryPlan;

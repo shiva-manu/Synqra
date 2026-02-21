@@ -4,6 +4,7 @@ import { QueryAST, Condition, LogicalGroup, LogicalCondition } from "../core/que
 import { ModelSchema } from "../core/schema.js";
 
 export class MongoAdapter implements Adapter {
+  public name = "mongodb";
   public capabilities = {
     supportsTransactions: false,
     supportsAggregation: true,

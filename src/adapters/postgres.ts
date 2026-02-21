@@ -4,6 +4,7 @@ import { QueryAST, Condition, LogicalGroup, LogicalCondition } from "../core/que
 import { ModelSchema } from "../core/schema.js";
 
 export class PostgresAdapter implements Adapter {
+  public name = "postgres";
   public capabilities = {
     supportsTransactions: true,
     supportsAggregation: true,
