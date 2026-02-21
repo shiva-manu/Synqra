@@ -76,6 +76,21 @@ export class Synqra {
     return this.models.get(name);
   }
 
+  async sync() {
+    if (this.adapter.capabilities.supportsSchemaSync) {
+      await this.adapter.sync(Array.from(this.models.values()));
+    } else {
+      console.warn("Configured adapter does not support schema synchronization.");
+    }
+  }
+
+  async planSync() {
+    if (this.adapter.capabilities.supportsSchemaSync) {
+      return await this.adapter.planSync(Array.from(this.models.values()));
+    }
+    throw new Error("Configured adapter does not support schema synchronization.");
+  }
+
   async transaction(callback: (tx: Synqra) => Promise<void>) {
     try {
       await this.adapter.begin();
