@@ -1,0 +1,28 @@
+# Source files (only include compiled dist/)
+src/
+examples/
+*.ts
+!*.d.ts
+
+# Development files
+.git/
+.gitignore
+.vscode/
+.idea/
+*.md
+!README.md
+tsconfig.json
+
+# Test files
+test/
+tests/
+*.test.ts
+*.spec.ts
+
+# Development dependencies
+node_modules/
+package-lock.json
+
+# Build config
+.eslintrc*
+.prettierrc*
