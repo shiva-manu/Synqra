@@ -54,6 +54,7 @@ describe("Cross-Database Schema Migration CLI Core", () => {
     defineUser(mongoDb);
 
     it("should generate a valid Postgres SQL CREATE TABLE plan", async () => {
+        await pgDb.connect();
         const plan = await pgDb.planSync();
         expect(plan.type).toBe("sql");
         expect(plan.operations.length).toBeGreaterThan(0);
@@ -66,6 +67,7 @@ describe("Cross-Database Schema Migration CLI Core", () => {
     });
 
     it("should generate a valid Mongo driver JSON Schema enforcement validation plan", async () => {
+        await mongoDb.connect();
         const plan = await mongoDb.planSync();
         expect(plan.type).toBe("mongo");
 
