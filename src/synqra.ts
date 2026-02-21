@@ -111,6 +111,10 @@ export class Synqra {
     return this.models.get(name);
   }
 
+  getModels(): ModelSchema[] {
+    return Array.from(this.models.values());
+  }
+
   async sync() {
     const primary = this.getAdapterByIntent("write");
     if (primary.capabilities.supportsSchemaSync) {
